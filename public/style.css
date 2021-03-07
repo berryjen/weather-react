@@ -1,0 +1,156 @@
+body {
+  background-image: url("sun-moon-lake.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+h1.city-name {
+  color: #b497c0;
+  font-size: 50px;
+  position: relative;
+  left: 300px;
+  bottom: 20px;
+}
+.temp {
+  color: white;
+  font-size: 50px;
+  position: relative;
+  top: 22px;
+}
+h1,
+h3 {
+  font-family: "Texturina", serif;
+  color: white;
+}
+.current-weather-condition {
+  font-size: 40px;
+}
+
+.high-and-low em {
+  font-size: 40px;
+  position: relative;
+  right: 550px;
+  top: 55px;
+}
+
+.search {
+  position: relative;
+  margin: 5px 5px;
+  width: 200px;
+  border-width: 3px;
+  border-color: #d8a09f;
+  padding: 5px 5px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+.go {
+  border-radius: 50%;
+  width: 50px;
+  height: 45px;
+  position: fixed;
+  right: 550px;
+  top: 35px;
+  margin: 5px 5px;
+  padding: 5px 5px;
+  border-color: #d8a09f;
+  text-align: center;
+  border-width: 3px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+#day-time {
+  font-family: "Texturina", serif;
+  color: white;
+  list-style-type: none;
+  position: relative;
+  font-size: 22px;
+  bottom: -20px;
+}
+
+#weatherInfo {
+  position: fixed;
+  right: 450px;
+  top: 50px;
+}
+
+#current-location-button {
+  position: relative;
+  border-width: 3px;
+  right: -235px;
+  bottom: 100px;
+}
+
+#celsius-link {
+  text-decoration: none;
+  color: white;
+}
+
+#fahrenheit-link {
+  text-decoration: none;
+  color: white;
+}
+
+.col {
+  position: relative;
+  font-family: "Texturina", serif;
+  color: white;
+  font-size: 18px;
+  bottom: 15px;
+}
+
+#icon {
+  position: relative;
+  bottom: 8px;
+}
+#temperature {
+  position: relative;
+  bottom: 30px;
+}
+
+#humidity-element {
+  font-size: 40px;
+  color: white;
+}
+
+#wind-element {
+  font-size: 40px;
+}
+
+.col-6 {
+  text-align: left;
+}
+
+.sup {
+  position: relative;
+  top: -45px;
+  font-size: 22px;
+}
+
+#forecast {
+  font-size: 20px;
+  font-weight: 10px;
+}
+
+.gitHub {
+  text-decoration: none;
+  color: #efdffc;
+  text-align: center;
+}
+
+.gitHub:hover {
+  text-decoration: underline;
+}
+
+.linkedIn {
+  text-decoration: none;
+  color: #efdffc;
+  text-align: center;
+}
+
+.linkedIn:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  color: white;
+}
