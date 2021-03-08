@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "./style.css";
 
 import CurrentWeather from "./CurrentWeather";
 import Footer from "./Footer";
