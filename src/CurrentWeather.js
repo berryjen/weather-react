@@ -43,7 +43,6 @@ function formatDate(timestamp) {
 export default function CurrentWeather(props) {
   let currentTime = new Date();
   const [weatherData, setWeatherData] = useState({ready: false});
-  
   function handleResponse(response) {
     setWeatherData({
       temperature: Math.round(response.data.main.temp),
@@ -54,6 +53,7 @@ export default function CurrentWeather(props) {
       iconUrl: "https://www.iconsdb.com/icons/preview/tropical-blue/cloud-4-xxl.png",
       description: response.data.weather[0].description
     });
+  }
 
 if (weatherData.ready) {
   return (
@@ -69,7 +69,6 @@ if (weatherData.ready) {
                 autofocus="on"
                 placeholder="City"
                 autocomplte="off"
-               
               />
             </form>
             <h2></h2>
@@ -178,4 +177,4 @@ if (weatherData.ready) {
     );
 }
 }
-}
+
