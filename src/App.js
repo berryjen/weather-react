@@ -7,7 +7,7 @@ import Form from "./Form";
 export default function App() {
   return (
     <div className="App">
-      <CurrentWeather />
+      <CurrentWeather defaultCity="Taipei" />
       <Footer />
       <Form />
     </div>
