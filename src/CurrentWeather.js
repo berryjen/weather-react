@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from"axios";
 import Loader from "react-loader-spinner";
 
+
 function formatHours(timestamp) {
 let date = new Date(timestamp);
 let hours = date.getHours();
@@ -43,6 +44,7 @@ function formatDate(timestamp) {
 export default function CurrentWeather(props) {
   let currentTime = new Date();
   const [weatherData, setWeatherData] = useState({ready: false});
+  const[city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
       temperature: Math.round(response.data.main.temp),
@@ -50,9 +52,28 @@ export default function CurrentWeather(props) {
       wind: Math.round(response.data.wind.speed),
       city: response.data.name,
       humidity: response.data.main.humidity,
+      temp_min: Math.round(response.data.main.temp_min),
+      temp_max: Math.round(response.data.main.temp_max),
       iconUrl: "https://www.iconsdb.com/icons/preview/tropical-blue/cloud-4-xxl.png",
       description: response.data.weather[0].description
     });
+  }
+
+  function search() {
+    const apiKey = "f080158c041532d07353f9c3c3fc3150";
+    let unit= "metirc";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(handleResponse);
+  
+  }
+ 
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
 
 if (weatherData.ready) {
@@ -61,7 +82,7 @@ if (weatherData.ready) {
       <div className="row mt-5 text-center">
         <div className="col">
           <div className="container">
-            <form onSubmit>
+            <form onSubmit={handleSubmit}>
               <input
                 type="search"
                 id="cityInput"
@@ -69,6 +90,7 @@ if (weatherData.ready) {
                 autofocus="on"
                 placeholder="City"
                 autocomplte="off"
+                onChange={handleCityChange}
               />
             </form>
             <h2></h2>
@@ -118,17 +140,18 @@ if (weatherData.ready) {
               <div className="col-6 text-center">
                 <h3 className="high-and-low">
                   <em>
-                    H: 19 <span id="temp_max"></span>ºC L: 18
+                    H: {weatherData.temp_max} <span id="temp_max"></span>ºC L: {weatherData.temp_min}
                     <span id="temp_min"></span>ºC
                   </em>
                 </h3>
 
                 <div className="col-6">
                   <h3 id="humidity-element">
-                    {weatherData.humidity}:<span id="humidity"></span>%
+                    Humidity: {weatherData.humidity} <span id="humidity">
+                      </span>%
                   </h3>
-                  <h3 id="wind-element">
-                    {weatherData.wind}:<span id="wind"></span>km/h
+                  <h3 id="wind-element"> 
+                  Wind: {weatherData.wind} <span id="wind"></span> km/h
                   </h3>
                 </div>
               </div>
@@ -162,10 +185,7 @@ if (weatherData.ready) {
     </div>
   );
 } else {
-  const apiKey = "f080158c041532d07353f9c3c3fc3150";
-  let unit= "metirc"
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${props.defaultCity}&appid=${apiKey}&units=${unit}`;
-  axios.get(apiUrl).then(handleResponse);
+  search();
   return (
       <Loader
         type="Hearts"
