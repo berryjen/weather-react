@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from"axios";
 import Loader from "react-loader-spinner";
+import WeatherIcon from "./WeatherIcon";
 
 
 function formatHours(timestamp) {
@@ -50,18 +51,18 @@ export default function CurrentWeather(props) {
       temperature: Math.round(response.data.main.temp),
       ready: true,
       wind: Math.round(response.data.wind.speed),
-      city: response.data.name,
+      city: response.data.name, 
+      iconUrl:  `response.data.weather[0].icon`,
       humidity: response.data.main.humidity,
       temp_min: Math.round(response.data.main.temp_min),
       temp_max: Math.round(response.data.main.temp_max),
-      iconUrl: "https://www.iconsdb.com/icons/preview/tropical-blue/cloud-4-xxl.png",
       description: response.data.weather[0].description
     });
   }
 
   function search() {
     const apiKey = "f080158c041532d07353f9c3c3fc3150";
-    let unit= "metirc";
+    let unit= "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(handleResponse);
   
@@ -111,6 +112,8 @@ if (weatherData.ready) {
               <div className="col-6 text-center">
                 <h1 className="city-name" id="city">
                   {weatherData.city}
+                <div className="float-left"></div>
+                <WeatherIcon code={weatherData.icon} />
                 </h1>
                 <h3 class>
                   <span className="current-weather-condition"></span>
@@ -140,18 +143,20 @@ if (weatherData.ready) {
               <div className="col-6 text-center">
                 <h3 className="high-and-low">
                   <em>
-                    H: {weatherData.temp_max} <span id="temp_max"></span>ºC L: {weatherData.temp_min}
+                    H: {weatherData.temp_max} 
+                    <span id="temp_max"></span>ºC
+                    L: {weatherData.temp_min}
                     <span id="temp_min"></span>ºC
                   </em>
                 </h3>
 
                 <div className="col-6">
-                  <h3 id="humidity-element">
-                    Humidity: {weatherData.humidity} <span id="humidity">
-                      </span>%
+                  <h3 id="humidity-element">Humidity:{weatherData.humidity}
+                  <span id="humidity"></span>%
                   </h3>
                   <h3 id="wind-element"> 
-                  Wind: {weatherData.wind} <span id="wind"></span> km/h
+                    Wind:{weatherData.wind} 
+                    <span id="wind"></span>km/h
                   </h3>
                 </div>
               </div>
@@ -164,11 +169,7 @@ if (weatherData.ready) {
               <div className="row Forecast" id="forecast">
                 <div className="col-2 text-center">
                   <div className="forecast">
-                    <img 
-                    src={weatherData.iconUrl}
-                    alt={weatherData.description}
-                    className= "float-left"
-                    />
+                    
                     <p>
                       <strong>
                         Tuesday <br />
