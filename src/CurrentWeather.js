@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from"axios";
 import Loader from "react-loader-spinner";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
 
 function formatHours(timestamp) {
@@ -52,7 +53,7 @@ export default function CurrentWeather(props) {
       ready: true,
       wind: Math.round(response.data.wind.speed),
       city: response.data.name, 
-      iconUrl:  `response.data.weather[0].icon`,
+      icon:  response.data.weather[0].icon,
       humidity: response.data.main.humidity,
       temp_min: Math.round(response.data.main.temp_min),
       temp_max: Math.round(response.data.main.temp_max),
@@ -94,8 +95,7 @@ if (weatherData.ready) {
                 onChange={handleCityChange}
               />
             </form>
-            <h2></h2>
-
+           
             <div className="row text-center">
               <div className="col">
                 <ul>
@@ -123,18 +123,8 @@ if (weatherData.ready) {
                   <div className="temp">
                     <h1 span className="temp">
                       <span id="temperature">{weatherData.temperature}</span>
-                      <sup className="sup" id="">
-                        {" "}
-                        <a href="/" id="celsius-link">
-                          °C
-                        </a>
-                      </sup>
-                      <sup className="sup" id="">
-                        {" "}
-                        <a href="/" id="fahrenheit-link">
-                          °F
-                        </a>
-                      </sup>
+                       <WeatherTemperature />
+                       
                     </h1>
                   </div>
                 </div>
@@ -161,7 +151,6 @@ if (weatherData.ready) {
                 </div>
               </div>
               <hr />
-
               <div
                 className="row row-cols-1 row-cols-sm-2 row-cols-md-4"
                 id="forecast"
@@ -169,7 +158,6 @@ if (weatherData.ready) {
               <div className="row Forecast" id="forecast">
                 <div className="col-2 text-center">
                   <div className="forecast">
-                    
                     <p>
                       <strong>
                         Tuesday <br />
