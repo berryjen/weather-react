@@ -11,16 +11,23 @@ h1.city-name {
   left: 300px;
   bottom: 20px;
 }
-.weather canvas {
-  margin-top: 5px;
+.weather-icon {
+ margin-right: 10px;
   display: inline-block;
-  margin-right: 10px;
+  margin-top: 10px;
+  
 }
+
+.forecast  {
+  
+  margin: 20px 0;
+}
+
 .temp {
   color: white;
   font-size: 50px;
   position: relative;
-  top: 22px;
+  top: 10px;
 }
 h1,
 h3 {

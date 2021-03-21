@@ -3,7 +3,7 @@ import axios from"axios";
 import Loader from "react-loader-spinner";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
-
+import WeatherForecast from "./WeatherForecast";
 
 function formatHours(timestamp) {
 let date = new Date(timestamp);
@@ -112,7 +112,7 @@ if (weatherData.ready) {
               <div className="col-6 text-center">
                 <h1 className="city-name" id="city">
                   {weatherData.city}
-                <div className="float-left"></div>
+                <div className="weather-icon"></div>
                 <WeatherIcon code={weatherData.icon} />
                 </h1>
                 <h3 class>
@@ -122,8 +122,8 @@ if (weatherData.ready) {
                 <div className="temp">
                   <div className="temp">
                     <h1 span className="temp">
-                      <span id="temperature">{weatherData.temperature}</span>
-                       <WeatherTemperature />
+                      <span className= "convert-temp">
+                        <WeatherTemperature celsius={weatherData.temperature} /></span>
                        
                     </h1>
                   </div>
@@ -151,27 +151,24 @@ if (weatherData.ready) {
                 </div>
               </div>
               <hr />
-              <div
-                className="row row-cols-1 row-cols-sm-2 row-cols-md-4"
-                id="forecast"
-              ></div>
-              <div className="row Forecast" id="forecast">
-                <div className="col-2 text-center">
+
+              <div className="container row" id="forecast">
+                <div className="container col">
                   <div className="forecast">
                     <p>
                       <strong>
-                        Tuesday <br />
+                        <WeatherForecast city={weatherData.city} />
+                       <br />
                       </strong>
-                      22º
                     </p>
                   </div>
                 </div>
               </div>
+              </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </div>
+            </div>
   );
 } else {
   search();
