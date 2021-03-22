@@ -13,12 +13,11 @@ export default function WeatherForecast(props) {
   if (loaded && props.city=== forecast.city.name) {
     return (
       <div className="WeatherForecast row">
-        <div className= "WeatherForecast col">
+       
           {forecast.list.slice(0,6).map(function(forecastItem) {
             return <WeatherForecastPreview data={forecastItem} />; 
           })}
-             </div>        
-      </div>
+      </div>        
     );
   } else {
   let apiKey= "f080158c041532d07353f9c3c3fc3150";
@@ -26,5 +25,4 @@ export default function WeatherForecast(props) {
   axios.get(url).then(handleForecastResponse);
   return null;
   }
- 
 }

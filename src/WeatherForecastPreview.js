@@ -14,12 +14,10 @@
     }
 
     return(
-      <div classNanme="ForecastPreview row">
-        <div className="col-6">
+        <div className="col-2">
         {hours()}
         <WeatherIcon code={props.data.weather[0].icon} />
         {temperature()}
-          </div>
         </div>
     );
  }
