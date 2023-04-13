@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+<<<<<<< Updated upstream
+=======
+import "./style.css";
+>>>>>>> Stashed changes
 
 export default function CurrentWeather() {
   let [city, setCity] = useState("");
@@ -118,4 +122,8 @@ export default function CurrentWeather() {
       </div>
     </div>
   );
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

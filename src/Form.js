@@ -1,5 +1,9 @@
 import React from "react";
+<<<<<<< Updated upstream
 
+=======
+import "./style.css";
+>>>>>>> Stashed changes
 
 export default function Form() {
   return (
@@ -13,17 +17,6 @@ export default function Form() {
         placeholder="GO"
         autocomplte="off"
       />
-      <div className="current-location-button">
-        <input
-          type="submit"
-          value="Current"
-          id="weatherInfo"
-          class="description"
-          autofocus=" on"
-          placeholder="GO"
-          autocomplte="off"
-        />
-      </div>
     </div>
   );
 }
